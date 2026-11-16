@@ -3,8 +3,10 @@
 #include "rubik_tables.h"
 
 /* Optimal 2x2x2 solver: IDA* over (permutation, orientation) coordinates,
- * the C stepping stone for rubik.S. Ported from Homework 1
- * (hankliuliu/minirubik, stage4/ida_v4.c).
+ * the C stepping stone for rubik.S. The search is that of Homework 1
+ * (hankliuliu/minirubik, stage4/ida_v4.c), written here as a plain
+ * recursion over tables indexed by p and o; ida_v4.c is iterative, with an
+ * explicit stack of nodes, and reads the byte-offset tables of rubik.S.
  *
  * A state is reduced to two coordinates: p, the Lehmer rank of the cubie
  * permutation (0..5039), and o, the base-3 rank of the first six orientations
